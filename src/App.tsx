@@ -8,7 +8,7 @@ const App = () => {
   const { timeLeft, isRunning, start, pause, reset, background } = useTimer(initialTime);
 
   return (
-    <div className={`flex flex-col items-center justify-center min-h-screen w-full ${background} p-6 transition-all duration-500 font-apple`}>
+    <div >
       {/* <h1 className="text-5xl font-light text-gray-900 mb-12">Pomodoro</h1> */}
       <Timer timeLeft={timeLeft} />
       {/* <ProgressBar timeLeft={timeLeft} initialTime={initialTime} /> */}
