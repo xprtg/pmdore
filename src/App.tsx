@@ -1,19 +1,21 @@
-import logoVite from './assets/logo-vite.svg'
-import logoElectron from './assets/logo-electron.svg'
-import './App.css'
+import useTimer from './hooks/useTimer';
+import Timer from './components/Timer';
+import Controls from './components/Controls';
+import ProgressBar from './components/ProgressBar';
 
-function App() {
+const App = () => {
+  const initialTime = 25 * 60;
+  const { timeLeft, isRunning, start, pause, reset, background } = useTimer(initialTime);
+
   return (
-    <div className='App'>
-      <div className='logo-box'>
-        <a href='https://github.com/electron-vite/electron-vite-react' target='_blank'>
-          <img src={logoVite} className='logo vite' alt='Electron + Vite logo' />
-          <img src={logoElectron} className='logo electron' alt='Electron + Vite logo' />
-        </a>
-      </div>
-      <h1>mafecita</h1>
+    <div className={`flex flex-col items-center justify-center min-h-screen w-full ${background} p-6 transition-all duration-500 font-apple`}>
+      {/* <h1 className="text-5xl font-light text-gray-900 mb-12">Pomodoro</h1> */}
+      <Timer timeLeft={timeLeft} />
+      {/* <ProgressBar timeLeft={timeLeft} initialTime={initialTime} /> */}
+      <Controls isRunning={isRunning} onStart={start} onPause={pause} onReset={reset} />
     </div>
-  )
-}
+  );
+};
 
-export default App
+
+export default App;
